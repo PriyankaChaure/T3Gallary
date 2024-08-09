@@ -8,6 +8,8 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { Toaster } from "~/components/ui/sonner";
+import { CSPostHogProvider } from "./_analytics/provide";
+
 
 export const metadata: Metadata = {
   title: " T3 Gallary",
@@ -24,6 +26,7 @@ export default function RootLayout({
 Readonly<{ children: React.ReactNode; modal: React.ReactNode;}>) {
   return (
     <ClerkProvider>
+      <CSPostHogProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
     <NextSSRPlugin
          
@@ -40,6 +43,7 @@ Readonly<{ children: React.ReactNode; modal: React.ReactNode;}>) {
       </body>
       
     </html>
+    </CSPostHogProvider>
     </ClerkProvider>
   );
 }
